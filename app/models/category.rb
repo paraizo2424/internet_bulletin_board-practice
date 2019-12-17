@@ -1,4 +1,4 @@
 class Category < ApplicationRecord
-  has_many :borads, dependent: :destroy
+  has_many :boards, dependent: :destroy
   validates :name, presence: true
 end
