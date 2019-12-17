@@ -1,9 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>id:</strong>
+  <%= @category.id %>
   <strong>Name:</strong>
   <%= @category.name %>
 </p>
 
-<%= link_to 'Edit', edit_category_path(@category) %> |
+<h1>スレッド一覧</h1>
+<p>
+  <% @boards.each do |board| %>
+    <% str = board.id.to_s + ": " + board.name + "(" + board.contents.count.to_s + ')' %>
+    <%= link_to str, board %>
+  <% end %>
+</p>
+
 <%= link_to 'Back', categories_path %>
