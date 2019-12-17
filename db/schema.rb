@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_17_102536) do
+ActiveRecord::Schema.define(version: 2019_12_17_103011) do
 
   create_table "boards", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "category_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -30,6 +31,7 @@ ActiveRecord::Schema.define(version: 2019_12_17_102536) do
     t.string "email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "board_id"
   end
 
 end
