@@ -11,6 +11,7 @@ class CategoriesController < ApplicationController
   # GET /categories/1.json
   def show
     @boards = @category.boards
+    @board = Board.new(category_id: params[:id])
   end
 
   # GET /categories/new
