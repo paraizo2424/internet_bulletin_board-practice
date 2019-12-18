@@ -1,14 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>タイトル:</strong>
   <%= @board.name %>
 </p>
 
 <p>
   <% @contents.each do |content| %>
     <p>
-      <% str = content.id.to_s + " 名前 : " + content.user_name + " : " + content.created_at.to_s + 'ID: wwwaaaa' %>
+      <% str = content.id.to_s + " 名前 : " + content.user_name + " : " + content.created_at.to_s + ' ID: wwwaaaa' %>
       <%= str %><br>
       <%= content.post %>
     </p>
