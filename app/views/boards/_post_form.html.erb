@@ -1,0 +1,26 @@
+<%= form_with(model: content, local: true) do |form| %>
+  
+  <div class="field">
+    <%= form.label :post %>
+    <%= form.text_area :post %>
+  </div>
+
+  <div class="field">
+    <%= form.label :board_id %>
+    <%= form.number_field :board_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_name %>
+    <%= form.text_field :user_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

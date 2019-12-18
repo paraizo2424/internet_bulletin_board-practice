@@ -11,6 +11,7 @@ class BoardsController < ApplicationController
   # GET /boards/1.json
   def show
     @contents = @board.contents
+    @content = Content.new(board_id: params[:id])
   end
 
   # GET /boards/new
