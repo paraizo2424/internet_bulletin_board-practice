@@ -17,4 +17,4 @@
 
 <%= render 'post_form', content: @content %>
 
-<%= link_to 'Back', boards_path %>
+<%= link_to 'Back', category_path(@board.category_id) %>
