@@ -11,7 +11,7 @@
 <p>
   <% @boards.each do |board| %>
     <% str = board.id.to_s + ": " + board.name + "(" + board.contents.count.to_s + ')' %>
-    <%= link_to str, board %>
+    <%= link_to str, board_path(board.id) %>
   <% end %>
 </p>
 
