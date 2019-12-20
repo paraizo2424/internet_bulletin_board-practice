@@ -6,9 +6,9 @@
 </p>
 
 <p>
-  <% @contents.each do |content| %>
+  <% @contents.each_with_index do |content, i| %>
     <p>
-      <% str = content.id.to_s + " 名前 : " + content.user_name + " : " + content.created_at.to_s + ' ID: wwwaaaa' %>
+      <% str = (i + 1).to_s + " 名前 : " + content.user_name + " : " + content.created_at.to_s + ' ID: wwwaaaa' %>
       <%= str %><br>
       <%= content.post %>
     </p>
