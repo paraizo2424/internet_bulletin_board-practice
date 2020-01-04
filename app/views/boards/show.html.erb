@@ -8,13 +8,28 @@
 <p>
   <% @contents.each_with_index do |content, i| %>
     <p>
-      <% str = (i + 1).to_s + " 名前 : " + content.user_name + " : " + content.created_at.strftime("%Y-%m-%d %H:%M:%S") + ' ID: wwwaaaa' %>
+      <% str = (i + 1).to_s %>
+      <% str << ' 名前 : ' + content.user_name + ' : ' %>
+      <% str << content.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
+      <% str << ' ID: wwwaaaa' %>
       <%= str %><br>
       <%= content.post %>
+    </p>
+
+    <p>
+      <% if i == 999 %>
+        <% str = '1001 名前 : Over 1000 Thread' %>
+        <%= str %><br>
+        <%= 'このスレッドは1000を超えました。' %><br>
+        <%= 'もう書けないので，新しいスレッドを立ててくださいです。。。' %>
+        <% break %>
+      <% end %>
     </p>
   <% end %>
 </p>
 
-<%= render 'post_form', content: @content %>
+<% if @contents.count < 1000 %>
+  <%= render 'post_form', content: @content %>
+<% end %>
 
 <%= link_to 'Back', category_path(@board.category_id) %>
