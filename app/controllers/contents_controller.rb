@@ -25,6 +25,7 @@ class ContentsController < ApplicationController
   # POST /contents.json
   def create
     @content = Content.new(content_params)
+    @content.user_name = "名無しさん" if @content.user_name.empty?
 
     respond_to do |format|
       if @content.save
