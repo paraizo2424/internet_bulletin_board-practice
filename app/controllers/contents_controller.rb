@@ -43,9 +43,12 @@ class ContentsController < ApplicationController
       return "名無しさん"
     end
 
-    unless user_name.scan(/#....../).empty?
-      #未完成
-      return "#aaa"
+    user_name.tr!("◆", "◇")
+
+    if user_name.include?("#")
+      trip = " ◆" + user_name.slice(user_name.index("#"), 6).crypt("salt")
+      user_name = user_name.slice(0, user_name.index("#") - 1)
+      return user_name + trip
     end
 
     return user_name
