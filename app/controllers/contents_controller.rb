@@ -25,7 +25,7 @@ class ContentsController < ApplicationController
   # POST /contents.json
   def create
     @content = Content.new(content_params)
-    @content.user_name = "名無しさん" if @content.user_name.empty?
+    @content.user_name = check_user_name(@content.user_name)
 
     respond_to do |format|
       if @content.save
@@ -36,6 +36,19 @@ class ContentsController < ApplicationController
         format.json { render json: @content.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def check_user_name(user_name)
+    if user_name.empty?
+      return "名無しさん"
+    end
+
+    unless user_name.scan(/#....../).empty?
+      #未完成
+      return "#aaa"
+    end
+
+    return user_name
   end
 
   # PATCH/PUT /contents/1
