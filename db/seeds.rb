@@ -18,6 +18,7 @@ board.save
   Content.create!(
     post: "#{ i+1 }回目の投稿です( ^ω^ )",
     user_name: "テストさん",
-    board_id: board.id
+    board_id: board.id,
+    ipv4: "192.168.10." + (i % 256).to_s
   )
 end
