@@ -11,6 +11,7 @@
       <th>created_at</th>
       <th>User name</th>
       <th>Email</th>
+      <th>IPv4</th>
       <th colspan="7"></th>
     </tr>
   </thead>
@@ -24,6 +25,7 @@
         <td><%= content.created_at %></td>
         <td><%= content.user_name %></td>
         <td><%= content.email %></td>
+        <td><%= content.ipv4 %></td>
         <td><%= link_to 'Show', content %></td>
         <td><%= link_to 'Edit', edit_content_path(content) %></td>
         <td><%= link_to 'Destroy', content, method: :delete, data: { confirm: 'Are you sure?' } %></td>
