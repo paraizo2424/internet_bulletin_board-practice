@@ -11,7 +11,8 @@
       <% str = (i + 1).to_s %>
       <% str << ' 名前 : ' + content.user_name + ' : ' %>
       <% str << content.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
-      <% str << ' ID: wwwaaaa' %>
+      <% id = content.created_at.strftime("%Y%m%d") + content.ipv4 %>
+      <% str << ' ID: ' + Digest::MD5.hexdigest(id) %>
       <%= str %><br>
       <%= content.post %>
     </p>
