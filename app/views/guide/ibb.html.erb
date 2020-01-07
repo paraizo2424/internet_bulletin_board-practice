@@ -12,11 +12,17 @@
           <%= @category.name %>@掲示板
         </h2>
         <p>
-          <% @boards.each do |board| %>
-            <% str = board.id.to_s + ": " + board.name + "(" + board.contents.count.to_s + ')' %>
-            <%= link_to str, board_path(board.id) %>
+          <% @boards.each_with_index do |board, i| %>
+            <% if i < 10%>
+              <% str = (i+1).to_s + ": " + board.name + "(" + board.contents.count.to_s + ')' %>
+              <%= link_to str, board_path(board.id) %>
+            <% end %>
           <% end %>
         </p>
+
+        <%= link_to "スレッド一覧はこちら", "/", class: "d-block text-right" %>
+
+        <%= render 'board_form', content: @board %>
       <% else %>
         <h1 class="text-center mt-4">ようこそIBBへ</h1>
       <% end %>
