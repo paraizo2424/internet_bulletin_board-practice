@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root to: 'guide#top'
+  get '/ibb' => 'guide#ibb'
+  
   resources :contents
   resources :boards
   resources :categories
