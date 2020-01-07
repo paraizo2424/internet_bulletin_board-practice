@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: 'categories#top'
   resources :contents
   resources :boards
   resources :categories
