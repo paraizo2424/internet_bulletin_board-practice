@@ -4,5 +4,10 @@ class GuideController < ApplicationController
 
   def ibb
     @categories = Category.all
+    if params[:category_id]
+      @category = Category.find(params[:category_id])
+      @boards = Category.find(params[:category_id]).boards
+      @board = Board.new(category_id: params[:category_id])
+    end
   end
 end
