@@ -2,11 +2,11 @@
 <%= form_with(model: content, local: true) do |form| %>
   <div class="field">
     <%= form.label :post %>
-    <%= form.text_area :post %>
+    <%= form.text_area :post, required: true %>
   </div>
 
   <div class="field">
-    <%= form.hidden_field :board_id, :value => @content.board_id %>
+    <%= form.hidden_field :board_id, value: @content.board_id %>
   </div>
 
   <div class="field">
