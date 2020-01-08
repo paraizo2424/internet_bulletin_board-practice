@@ -10,4 +10,7 @@ class GuideController < ApplicationController
       @board = Board.new(category_id: params[:category_id])
     end
   end
+
+  def login
+  end
 end

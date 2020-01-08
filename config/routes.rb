@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root to: 'guide#top'
   get '/ibb' => 'guide#ibb'
   get '/ibb/:category_id' => 'guide#ibb'
+  get '/login' => 'guide#login'
 
   resources :contents
   resources :boards
