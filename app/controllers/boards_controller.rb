@@ -12,6 +12,7 @@ class BoardsController < ApplicationController
   def show
     @contents = @board.contents
     @content = Content.new(board_id: params[:id])
+    @user_name = cookies[:user_name]
   end
 
   # GET /boards/new

@@ -26,6 +26,7 @@ class ContentsController < ApplicationController
   def create
     @content = Content.new(content_params)
     @content.ipv4 = request.remote_ip
+    cookies[:user_name] = params[:user_name]
     @content.user_name = check_user_name(@content.user_name)
 
     respond_to do |format|
