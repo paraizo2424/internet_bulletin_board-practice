@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mb-3">
   <div class="row">
     <div class="col-2 border">
       <% @categories.each do |category| %>
@@ -11,18 +11,66 @@
         <h2>
           <%= @category.name %>@掲示板
         </h2>
-        <p>
-          <% @boards.each_with_index do |board, i| %>
-            <% if i < 10%>
-              <% str = (i+1).to_s + ": " + board.name + "(" + board.contents.count.to_s + ')' %>
-              <%= link_to str, board_path(board.id) %>
-            <% end %>
-          <% end %>
-        </p>
 
-        <%= link_to "スレッド一覧はこちら", "/", class: "d-block text-right" %>
+        <div class="card mb-4">
+          <div class="card-body">
+            <p>
+              <% @boards.each_with_index do |board, i| %>
+                <% if i < 10%>
+                  <% str = (i+1).to_s + ": " + board.name + "(" + board.contents.count.to_s + ')' %>
+                  <%= link_to str, board_path(board.id) %>
+                <% end %>
+              <% end %>
+            </p>
+          </div>
+          <div class="card-footer">
+            <%= link_to "スレッド一覧はこちら", "/", class: "d-block text-right" %>
+          </div>
+        </div>
 
-        <%= render 'board_form', content: @board %>
+        <% 3.times do %>
+
+        <div class="card mb-4">
+          <div class="card-header">
+            <h4>スレッドタイトル</h4>
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+              1 名前 : 名無し : 2020-01-08 02:23:10 ID: ABCDE<br>
+              あああ
+            </p>
+
+            <p class="card-text">
+              1 名前 : あああ : 2020-01-08 02:23:10 ID: ABCDE<br>
+              あああ
+            </p>
+
+            <form method="POST" action="../test/bbs.cgi">
+              <input type="hidden" name="" value="">
+              <input type="submit" value="書き込む" name="submit">
+              <label>名前：<input name="user_name"></label>
+              <label>E-mail：<input name="email"></label><br>
+              <textarea rows="5" cols="64" wrap="OFF" name="post"></textarea>
+            </form>
+
+            <div class="btn-group btn-group-sm" role="group">
+              <button type="button" class="btn btn-secondary">スマホ用</button>
+              <button type="button" class="btn btn-secondary">全部読む</button>
+              <button type="button" class="btn btn-secondary">最新50</button>
+              <button type="button" class="btn btn-secondary">1-100</button>
+              <button type="button" class="btn btn-secondary">板のトップ</button>
+              <button type="button" class="btn btn-secondary">リロード</button>
+            </div>
+          </div>
+        </div>
+        <% end %>
+
+        <div class="card">
+          <div class="card-body">
+            <%= render 'board_form', content: @board %>
+          </div>
+        </div>
+
       <% else %>
         <h1 class="text-center mt-4">ようこそIBBへ</h1>
       <% end %>
