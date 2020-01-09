@@ -13,6 +13,8 @@ class BoardsController < ApplicationController
     @contents = @board.contents
     @content = Content.new(board_id: params[:id])
     @user_name = cookies[:user_name]
+    @user_name_from_cookie = cookies[:user_name]
+    @email_from_cookie = cookies[:email]
   end
 
   # GET /boards/new

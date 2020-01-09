@@ -11,12 +11,12 @@
 
   <div class="field">
     <%= form.label :user_name, "名前:" %>
-    <%= form.text_field :user_name, value: @user_name %>
+    <%= form.text_field :user_name, value: @user_name_from_cookie %>
   </div>
 
   <div class="field">
     <%= form.label :email, "E-mail(省略可):" %>
-    <%= form.text_field :email %>
+    <%= form.text_field :email, value: @email_from_cookie %>
   </div>
 
   <div class="actions">
