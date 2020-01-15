@@ -7,7 +7,9 @@
     </div>
 
     <div class="col-10 border">
-      <% if @boards %>
+      <% unless @board %>
+        <h1 class="text-center mt-4">ようこそIBBへ</h1>
+      <% else %>
         <h2>
           <%= @category.name %>@掲示板
         </h2>
@@ -28,41 +30,43 @@
           </div>
         </div>
 
-        <% 3.times do %>
+        <% @boards.first(5).each do |board| %>
+          <div class="card mb-4">
+            <div class="card-header">
+              <h4><%= board.name %></h4>
+            </div>
 
-        <div class="card mb-4">
-          <div class="card-header">
-            <h4>スレッドタイトル</h4>
-          </div>
-          <div class="card-body">
-            <p class="card-text">
-              1 名前 : 名無し : 2020-01-08 02:23:10 ID: ABCDE<br>
-              あああ
-            </p>
+            <div class="card-body">
+              <% board.contents.first(5).each_with_index do |content, i| %>
+                <p>
+                  <% str = (i + 1).to_s %>
+                  <% str << ' 名前 : ' + content.user_name + ' : ' %>
+                  <% str << content.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
+                  <% id = content.created_at.strftime("%Y%m%d") + content.ipv4 %>
+                  <% str << ' ID: ' + Digest::MD5.hexdigest(id) %>
+                  <%= str %><br>
+                  <%= content.post %>
+                </p>
+              <% end %>
 
-            <p class="card-text">
-              1 名前 : あああ : 2020-01-08 02:23:10 ID: ABCDE<br>
-              あああ
-            </p>
+              <form method="POST" action="">
+                <input type="hidden" name="" value="">
+                <input type="submit" value="書き込む" name="submit">
+                <label>名前：<input name="user_name"></label>
+                <label>E-mail：<input name="email"></label><br>
+                <textarea rows="5" cols="64" wrap="OFF" name="post"></textarea>
+              </form>
 
-            <form method="POST" action="../test/bbs.cgi">
-              <input type="hidden" name="" value="">
-              <input type="submit" value="書き込む" name="submit">
-              <label>名前：<input name="user_name"></label>
-              <label>E-mail：<input name="email"></label><br>
-              <textarea rows="5" cols="64" wrap="OFF" name="post"></textarea>
-            </form>
-
-            <div class="btn-group btn-group-sm" role="group">
-              <button type="button" class="btn btn-secondary">スマホ用</button>
-              <button type="button" class="btn btn-secondary">全部読む</button>
-              <button type="button" class="btn btn-secondary">最新50</button>
-              <button type="button" class="btn btn-secondary">1-100</button>
-              <button type="button" class="btn btn-secondary">板のトップ</button>
-              <button type="button" class="btn btn-secondary">リロード</button>
+              <div class="btn-group btn-group-sm" role="group">
+                <button type="button" class="btn btn-secondary">スマホ用</button>
+                <button type="button" class="btn btn-secondary">全部読む</button>
+                <button type="button" class="btn btn-secondary">最新50</button>
+                <button type="button" class="btn btn-secondary">1-100</button>
+                <button type="button" class="btn btn-secondary">板のトップ</button>
+                <button type="button" class="btn btn-secondary">リロード</button>
+              </div>
             </div>
           </div>
-        </div>
         <% end %>
 
         <div class="card">
@@ -71,8 +75,6 @@
           </div>
         </div>
 
-      <% else %>
-        <h1 class="text-center mt-4">ようこそIBBへ</h1>
       <% end %>
     </div>
   </div>
